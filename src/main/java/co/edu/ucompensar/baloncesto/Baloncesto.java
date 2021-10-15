@@ -168,20 +168,24 @@ public class Baloncesto extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCerProgActionPerformed
 
     public String solicitarDatos() {
+        String text = "";
         int numEst;
         String nomEst[];
         double datosEst[][];
-        String text = "";
-        numEst = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de estudiantes a registrar:"));
-        nomEst = new String[numEst];
-        datosEst = new double[numEst][2];
-        for (int i = 0; i < numEst; i++) {
-            nomEst[i] = JOptionPane.showInputDialog("Ingrese el nombre del estudiante No." + (i + 1));
-            datosEst[i][0] = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la edad del estudiante"));
-            datosEst[i][1] = Double.parseDouble(JOptionPane.showInputDialog("ingrese la estatura del estudiante"));
-            text = text + nomEst[i] + "\t" + datosEst[i][0] + "\t" + datosEst[i][1] + "\n";
+        try {
+            numEst = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de estudiantes a registrar:"));
+            nomEst = new String[numEst];
+            datosEst = new double[numEst][2];
+            for (int i = 0; i < numEst; i++) {
+                nomEst[i] = JOptionPane.showInputDialog("Ingrese el nombre del estudiante No." + (i + 1));
+                datosEst[i][0] = Double.parseDouble(JOptionPane.showInputDialog("Ingrese la edad del estudiante"));
+                datosEst[i][1] = Double.parseDouble(JOptionPane.showInputDialog("ingrese la estatura del estudiante"));
+                text = text + nomEst[i] + "\t" + datosEst[i][0] + "\t" + datosEst[i][1] + "\n";
+            }
+            JOptionPane.showMessageDialog(null, "Los datos fueron guardados Correctamente");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        JOptionPane.showMessageDialog(null, "Los datos fueron guardados Correctamente");
         return text;
     }
 
